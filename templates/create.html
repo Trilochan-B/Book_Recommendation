@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #000000, #444444);
+            color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .account-container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            width: 360px;
+            max-width: 100%;
+            text-align: center;
+        }
+        h1 {
+            margin: 0 0 20px;
+            font-size: 28px;
+            color: #f7f700;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            color: #f7f700;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #f7f700;
+            border-radius: 8px;
+            background-color: #333;
+            color: #f4f4f4;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .input-group input::placeholder {
+            color: #888;
+        }
+        .create-button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #f7f700, #ffcc00);
+            border: none;
+            border-radius: 8px;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .create-button:hover {
+            background: linear-gradient(45deg, #ffcc00, #f7f700);
+            transform: scale(1.05);
+        }
+        .create-button:focus {
+            outline: none;
+        }
+        .links {
+            margin-top: 20px;
+        }
+        .links a {
+            display: block;
+            color: #f7f700;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 10px 0;
+            transition: color 0.2s ease;
+        }
+        .links a:hover {
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+    <div class="account-container">
+        <h1>Create Account</h1>
+        <form action="#" method="post">
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="input-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="create-button">Create Account</button>
+        </form>
+        <div class="links">
+            <a href="/">Back to Login</a>
+            {%if msg == 1%}
+            <h4 style="color: #f4f4f4;">Registration Successfull</h4>
+            {%elif msg == 0%}
+            <h4 style="color: #f4f4f4;">Mobile No. already exist</h4>
+            {%endif%}
+        </div>
+    </div>
+</body>
+</html>

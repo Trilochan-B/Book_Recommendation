@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Display</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, black, #444444);
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            text-align: center;
+            min-height: 100vh;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        header {
+            background: linear-gradient(to right, black, #ffcc00);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            gap: 10%;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            transform: scale(1.05);
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container a:hover {
+            transform: scale(1.05);
+        }
+        .book {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin: 10px;
+            padding: 10px;
+            max-width: 200px;
+            text-align: center;
+        }
+        .book img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .book h2 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/model">Recommend</a>
+            <a href="#library">Library</a>
+            <a href="/author">Author</a>
+        </nav>
+    </header>
+    <div>
+        <h1> Author : {{au}}</h1>
+    </div>
+    <div class="container">
+        {%for i in ind%}
+        <a href="/product/{{name[i][0]}}" style="text-decoration: none;">
+        <div class="book">
+            <img src="{{name[i][1]}}" alt="{{name[i][0]}}">
+            <h2>{{name[i][0]}}</h2>
+        </div>
+    </a>
+        {%endfor%}
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000000, #444444);
+            color: #fff;
+        }
+
+        header {
+            background: linear-gradient(to right, black, #ffcc00);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            gap: 10%;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            transform: scale(1.05);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            /* Added margin-top for space above the content */
+            background: #1c1c1c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .product-images {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .product-images img {
+            max-width: 100%;
+            border: 2px solid #ffcc00;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background-color: #000;
+        }
+
+        .product-details {
+            flex: 2;
+        }
+
+        .product-details h1 {
+            margin: 0;
+            font-size: 2em;
+            color: #ffcc00;
+        }
+
+        .price {
+            font-size: 1.8em;
+            color: #ffcc00;
+            margin: 10px 0;
+        }
+
+        .description,
+        .reviews,
+        .related-products {
+            margin: 20px 0;
+        }
+
+        .description h2,
+        .reviews h2,
+        .related-products h2 {
+            color: #ffcc00;
+            border-bottom: 2px solid #ffcc00;
+            padding-bottom: 5px;
+        }
+
+        .reviews .review {
+            margin-bottom: 15px;
+        }
+
+        .review strong {
+            color: #ffcc00;
+        }
+
+        .related-products img {
+            max-width: 120px;
+            border: 2px solid #ffcc00;
+            border-radius: 5px;
+            margin-right: 10px;
+            background-color: #000;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            color: #000;
+            background-color: #ffcc00;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e6b800;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .product-header {
+                flex-direction: column;
+            }
+
+            .product-images {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .related-products img {
+                max-width: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/model">Recommend</a>
+            <a href="#library">Library</a>
+            <a href="/author">Author</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="product-header">
+            <div class="product-images">
+                <img src="{{detl[3]}}" alt="{{detl[2]}}">
+                <!-- <img src="product-image-1.jpg" alt="Product Image 1">
+                <img src="product-image-2.jpg" alt="Product Image 2"> -->
+            </div>
+            <div class="product-details">
+                <h1>{{detl[2]}}</h1>
+                <h3>By {{detl[1]}}</h3>
+                <div class="price">Rs-{{detl[5]}}/-</div>
+                <a href="#" class="btn">Buy Now</a>
+                <a href="#" class="btn">Add to Library</a>
+                <div class="price">
+                    {%for i in range(5)%}
+                    {%if i < detl[4]%}
+                    ★
+                    {%else%}
+                    ☆
+                    {%endif%}
+                    {%endfor%}
+                </div>
+                <div class="description">
+                    <h2>Description</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor eu fringilla
+                        hendrerit.</p>
+                </div>
+                <div class="reviews">
+                    <h2>Reviews</h2>
+                    <div class="review">
+                        <strong>John Doe</strong> <span>★★★★☆</span>
+                        <p>Great product, really loved it!</p>
+                    </div>
+                    <div class="review">
+                        <strong>Jane Smith</strong> <span>★★★☆☆</span>
+                        <p>Good, but there were some issues with delivery.</p>
+                    </div>
+                </div>
+                <div class="related-products">
+                    <h2>You may also like</h2>
+                    {%for i in range(rec[2])%}
+                    {%if i != 0%}
+                    <a href="/product/{{rec[0][i]}}" style="text-decoration: none;">
+                        <img src="{{rec[1][i]}}" alt="{{rec[0][i]}}">
+                    </a>
+                    {%endif%}
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
